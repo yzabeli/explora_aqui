@@ -7,6 +7,16 @@ interface CadHierarquia{
 
 class HierarquiaService {
     async cadastrar_hierarquia ({nome, descricao}: CadHierarquia){
+        const verificarHierarquia = await prismaClient.cadastroHierarquia.findFirst({
+            where: {
+                nome: nome
+            }
+        })
+ 
+        if (verificarHierarquia) {
+            throw new Error("Hierarquia ja Cadastrada");
+           
+        }
         const resposta = await prismaClient.cadastroHierarquia.create({
             data:{
                 nome: nome,

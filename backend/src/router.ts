@@ -1,6 +1,6 @@
 import { Router } from 'express'
 
-import { UsuariosControllers } from './Controller/Usuarios/UsuariosControllers'
+import { UsuariosControllers } from './Controller/LoginUsuarios/UsuariosControllers'
 import { ExcursoesControllers } from './Controller/Excursoes/ExcursoesControllers'
 import { FuncionariosControllers } from './Controller/Funcionarios/FuncionariosController' 
 import { HierarquiaControllers } from './Controller/Hierarquia/HierarquiaControllers'
