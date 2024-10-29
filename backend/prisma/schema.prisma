@@ -61,7 +61,7 @@ model CadastroFuncionarios {
   create_at DateTime? @default(now())
   update_at DateTime @default(now())
 
-  @@map("cadastro_funcionarios")
+  @@map("cadastro_funcionarios")  
 }
 
 model CadastroHierarquia {

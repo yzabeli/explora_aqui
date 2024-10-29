@@ -1,5 +1,9 @@
 import React from 'react';
 import './styles.css'; 
+import rio from  '../imgs/rio.jpg';
+import noronha from '../imgs/noronha.jpg'
+import sp from '../imgs/sp.jpg'
+import salvador from '../imgs/salvador.jpg'
 
 
 const Inicio = () => {
@@ -15,10 +19,10 @@ const Inicio = () => {
         <h2>Destinos Populares</h2>
         <div className="destinos-grid">
           {[
-            { nome: 'Rio de Janeiro', preco: 'R$ 1.200,00', img: 'rio.jpg' },
-            { nome: 'Fernando de Noronha', preco: 'R$ 3.500,00', img: 'noronha.jpg' },
-            { nome: 'São Paulo', preco: 'R$ 800,00', img: 'sp.jpg' },
-            { nome: 'Salvador', preco: 'R$ 1.500,00', img: 'salvador.jpg' },
+            { nome: 'Rio de Janeiro', preco: 'R$ 1.200,00', img: rio  },
+            { nome: 'Fernando de Noronha', preco: 'R$ 3.500,00', img: noronha },
+            { nome: 'São Paulo', preco: 'R$ 800,00', img: sp },
+            { nome: 'Salvador', preco: 'R$ 1.500,00', img: salvador},
           ].map((destino, index) => (
             <div key={index} className="destino-card">
               <img src={destino.img} alt={destino.nome} />
