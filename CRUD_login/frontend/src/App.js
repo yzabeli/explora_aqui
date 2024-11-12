@@ -1,11 +1,16 @@
-import './App.css'
+import React from 'react'
+import Rotas from './Routes'
+import { ToastContainer } from 'react-toastify'
 
 export default function App() {
   return (
     <div>
-      <h1>Crud Login</h1>
+      <Rotas />
+      <ToastContainer
+        autoClose={5000}
+      />
     </div>
-      
+
   )
 }
 
