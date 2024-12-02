@@ -1,44 +1,66 @@
-// Login.js
-import React, { useState } from 'react';
-import './styles.css';
+import React, {useContext, useState} from 'react';
 
-const Login = () => {
-  const [email, setEmail] = useState('');
-  const [senha, setSenha] = useState('');
+import { Link } from 'react-router-dom';
+import { AutenticadoContexto } from '../Contexts/authContext';
+ 
+ 
+ 
+export default function Login(){
+ 
+    const {loginEntrada} = useContext(AutenticadoContexto);
+ 
+    const [email, setEmail] = useState('');
+    const [senha, setSenha] = useState('');
+ 
+ 
+    async function dadosLogin(e){
+ 
+        e.preventDefault();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Aqui você pode adicionar a lógica de autenticação
-    console.log('Email:', email);
-    console.log('Senha:', senha);
-  };
-
-  return (
-    <div className="login-container">
-      <h2>Área de Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Email:</label>
-          <input
-            type="email"
+ 
+        if(!email || !senha){
+ 
+            alert('Preencha todos os campos!');
+            return
+        }
+ 
+        try {
+           
+            await loginEntrada(email, senha);
+ 
+        } catch (err) {
+           
+           
+ 
+        }
+    }
+ 
+    return(
+ 
+        <div className='conteinerInicioGeral'>
+ 
+        <h1>Login aluno</h1>
+ 
+        <form onSubmit={dadosLogin}>
+ 
+            <input
+            type="text"
+            placeholder='Digite o E-mail'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Senha:</label>
-          <input
+            />
+ 
+            <input
             type="password"
-            value={senha}
-            onChange={(e) => setSenha(e.target.value)}
-            required
-          />
+            placeholder='Digite a Senha'  
+            value={senha}  
+            onChange={(e) => setSenha(e.target.value)}      
+            />
+ 
+            <button type="Submit">Enviar</button>
+        </form>
+        <p>Para se cadastrar clique <Link to = '/CadastrarUsuario'>Aqui</Link></p>
         </div>
-        <button type="submit">Entrar</button>
-      </form>
-    </div>
-  );
-};
-
-export default Login;
+    )
+}
+ 

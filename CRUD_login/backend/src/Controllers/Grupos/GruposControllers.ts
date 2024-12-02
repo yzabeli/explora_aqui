@@ -1,12 +1,11 @@
-import { Request, Response } from "express";
-import { GruposServices } from "../../Services/Grupos/GruposServices";
+import { Request, Response } from 'express'
+import { GruposServices } from '../../Services/Grupos/GruposServices'
 
-
-class GruposControllers {
-    async cadastrargrupos(req: Request, res: Response) {
-        const {nome} = req.body
-        const enviargruposServices = new GruposServices()
-        const resposta = await enviargruposServices.cadastrarGrupos({
+class GruposControllers{
+    async cadastrarGrupos(req: Request, res: Response){
+        const { nome } = req.body
+        const enviarDadosServices = new GruposServices()
+        const resposta = await enviarDadosServices.cadastrarGrupos({
             nome
         })
         return res.json(resposta)

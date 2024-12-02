@@ -1,17 +1,24 @@
 import React, { useState, useEffect } from 'react'
 import './estilo.dashboard.scss'
 import { toast } from 'react-toastify'
-import apiLocal from '../Api/apiLocal'
-import { Link} from 'react-router-dom'
- 
+import apiLocal from './../Api/apiLocal'
+import { Link } from 'react-router-dom'
+
 export default function DashBoard() {
- 
+    
     const [dadosUsuarios, setDadosUsuarios] = useState([''])
- 
+
+    const iToken = localStorage.getItem('@token')
+    const token = JSON.parse(iToken)
+
     useEffect(() => {
         try {
             async function consultarDadosusuarios() {
-                const resposta = await apiLocal.get('/ConsultarUsuarios')
+                const resposta = await apiLocal.get('/ConsultarUsuarios', {
+                    headers: {
+                        Authorization: 'Bearer ' + `${token}`
+                    }
+                })
                 setDadosUsuarios(resposta.data)
             }
             consultarDadosusuarios()
@@ -21,10 +28,10 @@ export default function DashBoard() {
             })
         }
     }, [dadosUsuarios])
- 
+
     async function apagaUsuarios(id) {
         try {
-            await apiLocal.delete(`DeletarUsuarios/${id}`)
+            await apiLocal.delete(`/ApagarUsuarios/${id}`)
             toast.success('Registro Apagado com Sucesso', {
                 toastId: 'ToastId'
             })
@@ -34,7 +41,7 @@ export default function DashBoard() {
             })
         }
     }
- 
+
     return (
         <>
             {dadosUsuarios.length === 0

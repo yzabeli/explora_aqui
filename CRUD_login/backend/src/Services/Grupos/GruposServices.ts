@@ -1,17 +1,18 @@
-import prismaClient from "../../prisma";
+import prismaClient from '../../Prisma'
 
-interface cadGrupos{
+interface CadGrupos {
     nome: string
 }
 
-class GruposServices{
-    async cadastrarGrupos({nome}: cadGrupos){
+class GruposServices {
+    async cadastrarGrupos({ nome }: CadGrupos) {
         await prismaClient.cadastrarGrupos.create({
-            data:{
+            data: {
                 nome: nome
             }
         })
-        return ({dados: 'Grupo Cadastrado com Sucesso'})
+        return ({ dados: 'Cadastro Efetuado Com Sucesso' })
     }
 }
-export {GruposServices}
+
+export { GruposServices }

@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Cabecalho from '../Components/Cabecalho';
 import Inicio from '../Inicio'
 import Rodape from '../Components/Rodape';
-import Obrigada from '../Obg/obrigado'
+import CadastrarUsuarios from '../CadastrarUsuario/CadastrarUsuario'
 
 
 export default function NaoAutenticados() {
@@ -12,7 +12,7 @@ export default function NaoAutenticados() {
         <Cabecalho/>
             <Routes>
                 <Route path='/' element={<Inicio />} />
-                <Route path='/obrigado' element={<Obrigada/>} />
+                <Route path='/CadastrarUsuario' element={<CadastrarUsuarios/>} />
                 <Route path='*' element={<Inicio />} />
             </Routes>
             <Rodape/>
